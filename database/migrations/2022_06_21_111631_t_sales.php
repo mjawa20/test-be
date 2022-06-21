@@ -13,13 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('t_sales', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('kode', 15);
+            $table->timestamp('tgl');
+            $table->foreignId('cust_id')->constrained('m_customer');
+            $table->float('subtotal');
+            $table->float('diskon');
+            $table->float('ongkir');
+            $table->float('total_bayar');
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('t_sales');
     }
 };
