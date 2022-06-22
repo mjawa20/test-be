@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Number;
 use Illuminate\Http\Request;
 
 use App\Helpers\ResponseBuilder;
 use App\Models\TSales;
+use Carbon\Carbon;
 use Exception;
+use Illuminate\Support\Str;
 
 class Transaksi extends Controller
 {
@@ -18,8 +21,8 @@ class Transaksi extends Controller
     public function store(Request $request)
     {
         try {
+            dd(Number::transaksiGenerate(),Number::transaksiGenerate());
             $transaksi = $request->validate([
-                'kode' => 'required',
                 'tgl' => 'required',
                 'cust_id' => 'required',
                 'subtotal' => 'required',
@@ -27,6 +30,7 @@ class Transaksi extends Controller
                 'ongkir' => 'required',
                 'total_bayar' => 'required',
             ]);
+            $transaksi['kode'] = Str::random(4);
             TSales::create($transaksi);
             return ResponseBuilder::createResponse(200, 'Post data success', $transaksi);
         } catch (Exception $err) {
@@ -37,7 +41,7 @@ class Transaksi extends Controller
     {
         $transaksi = TSales::find($id);
         $transaksi->delete();
-        
+
         return ResponseBuilder::createResponse(200, 'Delete Success');
     }
 }
