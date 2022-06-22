@@ -6,6 +6,7 @@ use App\Helpers\ResponseBuilder;
 use App\Models\MCustomer;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class Customer extends Controller
 {
@@ -17,10 +18,10 @@ class Customer extends Controller
     {
         try {
             $customer = $request->validate([
-                'kode' => 'required',
                 'nama' => 'required',
                 'telp' => 'required',
             ]);
+            $customer['kode'] = Str::random(8);
             MCustomer::create($customer);
             return ResponseBuilder::createResponse(200, 'Post data success', $customer);
         } catch (Exception $err) {

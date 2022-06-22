@@ -6,6 +6,7 @@ use App\Helpers\ResponseBuilder;
 use App\Models\MBarang;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class Barang extends Controller
 {
@@ -18,10 +19,10 @@ class Barang extends Controller
     {
         try {
             $barang = $request->validate([
-                'kode' => 'required',
                 'nama' => 'required',
                 'harga' => 'required',
             ]);
+            $barang['kode'] = Str::random(8);
             MBarang::create($barang);
             return ResponseBuilder::createResponse(200, 'Post data success', $barang);
         } catch (Exception $err) {
