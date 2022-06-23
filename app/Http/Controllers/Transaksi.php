@@ -21,16 +21,16 @@ class Transaksi extends Controller
     public function store(Request $request)
     {
         try {
-            dd(Number::transaksiGenerate(),Number::transaksiGenerate());
             $transaksi = $request->validate([
                 'tgl' => 'required',
                 'cust_id' => 'required',
                 'subtotal' => 'required',
-                'diskon' => 'required',
-                'ongkir' => 'required',
+                'diskon' => '',
+                'ongkir' => '',
                 'total_bayar' => 'required',
             ]);
             $transaksi['kode'] = Str::random(4);
+
             TSales::create($transaksi);
             return ResponseBuilder::createResponse(200, 'Post data success', $transaksi);
         } catch (Exception $err) {

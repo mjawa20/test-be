@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('t_sales', function (Blueprint $table) {
             $table->id();
             $table->string('kode', 15);
-            $table->timestamp('tgl');
+            $table->date('tgl');
             $table->foreignId('cust_id')->constrained('m_customers');
-            $table->float('subtotal');
-            $table->float('diskon');
-            $table->float('ongkir');
-            $table->float('total_bayar');
+            $table->float('subtotal',50);
+            $table->float('diskon',50);
+            $table->float('ongkir',50);
+            $table->float('total_bayar',50);
             $table->timestamps();
         });
     }

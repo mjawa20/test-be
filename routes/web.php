@@ -17,9 +17,7 @@ use App\Http\Controllers\Transaksi;
 |
 */
 
-Route::resource('api/transaksi', Transaksi::class)->except([
-    'create', 'update'
-]);
+Route::resource('api/transaksi', Transaksi::class);
 Route::resource('api/barang', Barang::class)->except([
     'create', 'update'
 ]);
