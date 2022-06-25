@@ -23,7 +23,7 @@ class Transaksi extends Controller
         try {
             $transaksi = $request->validate([
                 'tgl' => 'required',
-                'cust_id' => 'required',
+                'mcustomer_id' => 'required',
                 'subtotal' => 'required',
                 'diskon' => '',
                 'ongkir' => '',

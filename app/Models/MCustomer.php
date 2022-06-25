@@ -14,4 +14,9 @@ class MCustomer extends Model
         'nama',
         'telp',
     ];
+
+    public function transaksi()
+    {
+        return $this->hasMany(TSales::class);
+    }
 }

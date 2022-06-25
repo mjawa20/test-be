@@ -12,10 +12,15 @@ class TSales extends Model
     protected $fillable = [
         'kode',
         'tgl',
-        'cust_id',
+        'mcustomer_id',
         'subtotal',
         'diskon',
         'ongkir',
         'total_bayar',
     ];
+
+    public function customer()
+    {
+        return $this->belongsTo(MCustomer::class);
+    }
 }

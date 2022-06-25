@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('kode', 15);
             $table->date('tgl');
-            $table->foreignId('cust_id')->constrained('m_customers');
+            $table->foreignId('mcustomer_id')->constrained('m_customers');
             $table->float('subtotal', 50, 2);
             $table->float('diskon', 50, 2);
             $table->float('ongkir', 50, 2);
