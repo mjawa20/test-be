@@ -17,6 +17,10 @@ class Transaksi extends Controller
     {
         return ResponseBuilder::createResponse(200, 'Get Data Success', TSales::all());
     }
+    public function show($id)
+    {
+        return ResponseBuilder::createResponse(200, 'Get Data Success', TSales::find($id));
+    }
 
     public function store(Request $request)
     {

@@ -14,6 +14,12 @@ class Customer extends Controller
     {
         return ResponseBuilder::createResponse(200, 'Get Data Success', MCustomer::all());
     }
+
+    public function show($id)
+    {
+        return ResponseBuilder::createResponse(200, 'Get Data Success', MCustomer::find($id));
+    }
+
     public function store(Request $request)
     {
         try {
